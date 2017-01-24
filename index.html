@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Captura de un puzzle en 168º</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+
+    var images = [
+        'IMG_20170124_143543382',
+        'IMG_20170124_143545165',
+        'IMG_20170124_143546734',
+        'IMG_20170124_143548592',
+        'IMG_20170124_143550310',
+        'IMG_20170124_143552683',
+        'IMG_20170124_143555061',
+        'IMG_20170124_143557183',
+        'IMG_20170124_143559573',
+        'IMG_20170124_143601733',
+        'IMG_20170124_143604149'
+    ];
+
+    $( "#slider" ).slider({
+      value:0,
+      min: 0,
+      max: images.length - 1,
+      step: 1,
+      slide: function( event, ui ) {
+        $( '.image' ).hide();
+        $( '#'+images[ui.value] ).show();
+      }
+    });
+
+    images.forEach(function(e) {
+        $("#images").append('<img class="image" id="'+e+'" src="'+e+'.jpg" width="100%"></img>');
+    });
+
+    $( '.image' ).hide();
+    $( '#'+images[0] ).show();
+  } );
+  </script>
+</head>
+<body>
+<div style="width: 70%">
+<p id="images">
+</p>
+
+<div id="slider"></div>
+</div>
+
+</body>
+</html>
